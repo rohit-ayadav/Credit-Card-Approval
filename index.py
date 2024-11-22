@@ -120,32 +120,32 @@ class CreditApplicationProcessor:
         
         # Age Distribution
         plt.subplot(2, 3, 2)
-        sns.boxplot(x='Approved', y='Age', data=data, palette=colors)
+        sns.boxplot(x='Approved', y='Age', data=data, hue='Approved', palette=colors, legend=False)
         plt.title('Age Distribution by Approval Status', pad=20)
         plt.xlabel('Application Status (0=Rejected, 1=Approved)')
         
         # Income Distribution
         plt.subplot(2, 3, 3)
-        sns.boxplot(x='Approved', y='Income', data=data, palette=colors)
+        sns.boxplot(x='Approved', y='Income', data=data, palette=colors, hue='Approved', legend=False)
         plt.title('Income Distribution by Approval Status', pad=20)
         plt.xlabel('Application Status (0=Rejected, 1=Approved)')
         
         # Credit Score Distribution
         plt.subplot(2, 3, 4)
         sns.histplot(data=data, x='CreditScore', hue='Approved', multiple="stack",
-                    palette=colors)
+                    palette=colors, kde=True)
         plt.title('Credit Score Distribution', pad=20)
         plt.xlabel('Credit Score')
         
         # Years Employed Distribution
         plt.subplot(2, 3, 5)
-        sns.boxplot(x='Approved', y='YearsEmployed', data=data, palette=colors)
+        sns.boxplot(x='Approved', y='YearsEmployed', data=data, palette=colors, hue='Approved', legend=False)
         plt.title('Years Employed Distribution', pad=20)
         plt.xlabel('Application Status (0=Rejected, 1=Approved)')
         
         # Debt Distribution
         plt.subplot(2, 3, 6)
-        sns.boxplot(x='Approved', y='Debt', data=data, palette=colors)
+        sns.boxplot(x='Approved', y='Debt', data=data, palette=colors, hue='Approved', legend=False)
         plt.title('Debt Distribution', pad=20)
         plt.xlabel('Application Status (0=Rejected, 1=Approved)')
         
@@ -244,10 +244,12 @@ def main():
             except Exception as e:
                 print(f"Error processing application: {str(e)}")
                 continue
-                
+            
     except Exception as e:
         print(f"Fatal error: {str(e)}")
         return
+    print("\nThank you for using the credit card application processor")
+    print("Goodbye!")
 
 if __name__ == "__main__":
     main()
